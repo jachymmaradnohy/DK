@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #0c0c0c;
+            --bg-card: #161616;
+            --bg-input: #000000;
+            --border-color: #333333;
+            --border-focus: #ffffff;
+            --text-main: #ffffff;
+            --accent-crimson: #ff2d55;
+            --accent-crimson-hover: #e02447;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Strict rectangular styling rules - NO ROUNDED EDGES */
+        *, *::before, *::after {
+            border-radius: 0px !important;
+        }
+
+        /* Flat sharp card styling */
+        .sharp-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Flat input styling */
+        .sharp-input {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.15s ease;
+        }
+
+        .sharp-input:focus {
+            border-color: var(--border-focus);
+        }
+
+        /* Flat sharp buttons */
+        .btn-primary {
+            background-color: var(--accent-crimson);
+            color: #ffffff;
+            border: 1px solid var(--accent-crimson);
+            font-weight: 600;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-crimson-hover);
+            border-color: var(--accent-crimson-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.15s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #ffffff;
+        }
+
+        /* Custom flat option cards */
+        .sharp-radio-label {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-color);
+            transition: border-color 0.15s ease, background-color 0.15s ease;
+            cursor: pointer;
+        }
+
+        .sharp-radio-label:hover {
+            border-color: #ffffff;
+        }
+
+        .sharp-radio-input:checked + .sharp-radio-content {
+            border-color: var(--accent-crimson);
+            background-color: #22080d;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <main class="w-full max-w-lg">
+        <!-- Main Sharp Frame Container -->
+        <div class="sharp-card p-8 md:p-10">
+
+            <!-- Form Start -->
+            <form id="qa-form" action="https://formspree.io/f/mkjoqvyq" method="POST" class="space-y-6">
+                
+                <!-- Step 01: Favorite Evening -->
+                <div class="question-step space-y-6" data-step="1">
+                    <h2 class="text-xl font-semibold tracking-tight text-white">Co si dnes měl?</h2>
+                    <div class="space-y-3">
+                        <label class="block">
+                            <input type="radio" name="ideal_evening" value="Quiet dimly lit speakeasy or music lounge" required class="sr-only sharp-radio-input">
+                            <div class="sharp-radio-content p-4 sharp-radio-label flex items-center justify-between">
+                                <span class="text-sm">koprovku</span>
+                            </div>
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="ideal_evening" value="Late-night street food exploration" class="sr-only sharp-radio-input">
+                            <div class="sharp-radio-content p-4 sharp-radio-label flex items-center justify-between">
+                                <span class="text-sm">butter chicken</span>
+                            </div>
+                        </label>
+                        <label class="block">
+                            <input type="radio" name="ideal_evening" value="Private movie screening and ordered cuisine" class="sr-only sharp-radio-input">
+                            <div class="sharp-radio-content p-4 sharp-radio-label flex items-center justify-between">
+                                <span class="text-sm">nejim zmrzlinu</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 02: Destination -->
+                <div class="question-step space-y-6 hidden" data-step="2">
+                    <h2 class="text-xl font-semibold tracking-tight text-white">Jaký je tvůj nejoblíbenější film?</h2>
+                    <div class="space-y-2">
+                        <input type="text" id="travel_destination" name="travel_destination" placeholder="City, cozy spot, or atmosphere..." 
+                            class="w-full p-4 sharp-input text-sm">
+                    </div>
+                </div>
+
+                <!-- Step 03: Favorite Treat -->
+                <div class="question-step space-y-6 hidden" data-step="3">
+                    <h2 class="text-xl font-semibold tracking-tight text-white">Jaký je tvůj nejoblíbenější pokrm?</h2>
+                    <div class="space-y-2">
+                        <input type="text" id="favorite_treat" name="favorite_treat" placeholder="Your go-to snack, drink, or dessert..." 
+                            class="w-full p-4 sharp-input text-sm">
+                    </div>
+                </div>
+
+                <!-- Step 04: Perfect Sunday -->
+                <div class="question-step space-y-6 hidden" data-step="4">
+                    <h2 class="text-xl font-semibold tracking-tight text-white">baf?</h2>
+                    <div class="space-y-2">
+                        <textarea id="ideal_weekend" name="ideal_weekend" rows="4" placeholder="Morning coffee, sleep in, explore..." 
+                            class="w-full p-4 sharp-input text-sm resize-none"></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 05: One Wish -->
+                <div class="question-step space-y-6 hidden" data-step="5">
+                    <h2 class="text-xl font-semibold tracking-tight text-white">Co budeš zítra dělat?</h2>
+                    <div class="space-y-2">
+                        <textarea id="secret_directive" name="secret_directive" rows="4" placeholder="Anything you'd like..." 
+                            class="w-full p-4 sharp-input text-sm resize-none"></textarea>
+                    </div>
+                </div>
+
+                <!-- Action Navigation Panel -->
+                <div class="flex items-center justify-between pt-6 border-t border-[#262626]">
+                    <button type="button" id="prev-btn" class="btn-secondary px-6 py-3 text-xs uppercase tracking-wider hidden">
+                        Back
+                    </button>
+                    <div class="ml-auto flex space-x-3">
+                        <button type="button" id="next-btn" class="btn-primary px-8 py-3 text-xs uppercase tracking-wider">
+                            Next
+                        </button>
+                        <button type="submit" id="submit-btn" class="btn-primary px-8 py-3 text-xs uppercase tracking-wider hidden">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Clean Sharp Thank You Screen -->
+            <div id="success-screen" class="hidden text-center py-12 space-y-4">
+                <h2 class="text-3xl font-semibold tracking-tight text-white">Děkuji.</h2>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentStep = 1;
+            const totalSteps = 5;
+
+            const steps = document.querySelectorAll('.question-step');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const form = document.getElementById('qa-form');
+            const successScreen = document.getElementById('success-screen');
+
+            function updateView() {
+                steps.forEach((step) => {
+                    const stepNum = parseInt(step.getAttribute('data-step'), 10);
+                    if (stepNum === currentStep) {
+                        step.classList.remove('hidden');
+                    } else {
+                        step.classList.add('hidden');
+                    }
+                });
+
+                if (currentStep === 1) {
+                    prevBtn.classList.add('hidden');
+                } else {
+                    prevBtn.classList.remove('hidden');
+                }
+
+                if (currentStep === totalSteps) {
+                    nextBtn.classList.add('hidden');
+                    submitBtn.classList.remove('hidden');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                    submitBtn.classList.add('hidden');
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateView();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateView();
+                }
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.innerText = "Sending...";
+                submitBtn.disabled = true;
+
+                const formData = new FormData(form);
+
+                try {
+                    await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    form.classList.add('hidden');
+                    successScreen.classList.remove('hidden');
+
+                } catch (err) {
+                    form.classList.add('hidden');
+                    successScreen.classList.remove('hidden');
+                }
+            });
+
+            updateView();
+        });
+    </script>
+</body>
+</html>
